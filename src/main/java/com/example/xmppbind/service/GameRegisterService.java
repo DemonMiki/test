@@ -4,16 +4,14 @@ import com.example.xmppbind.extension.GameAccountBinding;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import run.halo.app.extension.ListOptions;
 import run.halo.app.extension.Metadata;
-import run.halo.app.extension.PageRequestImpl;
+import org.springframework.data.domain.Sort;
 import run.halo.app.extension.ReactiveExtensionClient;
 
 import java.time.Instant;
@@ -64,7 +62,7 @@ public class GameRegisterService {
     }
 
     private Mono<Void> ensureGameUsernameNotBound(String gameUsername) {
-        return extensionClient.listAll(GameAccountBinding.class, ListOptions.NONE, PageRequestImpl.defaultSort())
+        return extensionClient.listAll(GameAccountBinding.class, ListOptions.NONE, Sort.by(Sort.Order.asc("metadata.name")))
             .filter(item -> item.getSpec() != null)
             .filter(item -> Objects.equals(item.getSpec().getGameUsername(), gameUsername))
             .next()
