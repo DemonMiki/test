@@ -1,0 +1,14 @@
+apiVersion: v1alpha1
+kind: Role
+metadata:
+  name: xmpp-bind-role-register-game-account
+  labels:
+    halo.run/role-template: "true"
+  annotations:
+    rbac.authorization.halo.run/module: "Game Account"
+    rbac.authorization.halo.run/display-name: "注册游戏账号"
+    rbac.authorization.halo.run/ui-permissions: |
+      ["plugin:xmpp-bind:game-account:register"]
+rules:
+  - nonResourceURLs: ["/apis/xmpp-bind.halo.run/v1alpha1/game-register"]
+    verbs: ["create"]

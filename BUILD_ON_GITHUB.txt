@@ -1,0 +1,5 @@
+1. 把这个项目整个上传到 GitHub 新仓库。
+2. 打开仓库的 Actions。
+3. 运行工作流 Build Halo Plugin。
+4. 构建完成后，在该次 Actions 运行页面下载 xmpp-bind-plugin-jar 工件。
+5. 下载到的 JAR 就是可安装到 Halo 的插件包。

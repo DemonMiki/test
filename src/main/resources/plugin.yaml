@@ -1,0 +1,15 @@
+apiVersion: plugin.halo.run/v1alpha1
+kind: Plugin
+metadata:
+  name: xmpp-bind
+spec:
+  enabled: false
+  requires: ">=2.20.0"
+  author:
+    name: OpenAI
+    website: https://openai.com
+  displayName: "游戏账号绑定"
+  description: "为已登录 Halo 用户注册一个游戏账号，并同步到 XMPP 游戏服务器。"
+  homepage: https://openai.com
+  repo: https://openai.com
+  issues: https://openai.com
